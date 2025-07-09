@@ -1,0 +1,20 @@
+# CODEOWNERS info: https://help.github.com/en/articles/about-code-owners
+# Owners are automatically requested for review for PRs that changes code
+# that they own.
+
+/frontend/ @SigNoz/frontend @YounixM
+/frontend/src/container/MetricsApplication @srikanthccv
+/frontend/src/container/NewWidget/RightContainer/types.ts @srikanthccv
+/deploy/ @SigNoz/devops
+.github @SigNoz/devops
+/pkg/config/ @grandwizard28
+/pkg/errors/ @grandwizard28
+/pkg/factory/ @grandwizard28
+/pkg/types/ @grandwizard28
+.golangci.yml @grandwizard28
+/pkg/zeus/ @vikrantgupta25
+/pkg/licensing/ @vikrantgupta25
+/pkg/sqlmigration/ @vikrantgupta25
+/ee/zeus/ @vikrantgupta25
+/ee/licensing/ @vikrantgupta25
+/ee/sqlmigration/ @vikrantgupta25
