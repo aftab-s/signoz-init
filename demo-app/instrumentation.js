@@ -5,6 +5,8 @@ const { getNodeAutoInstrumentations } = require('@opentelemetry/auto-instrumenta
 const { OTLPTraceExporter } = require('@opentelemetry/exporter-trace-otlp-http');
 const { resources } = require('@opentelemetry/sdk-node');
 const { SEMRESATTRS_SERVICE_NAME } = require('@opentelemetry/semantic-conventions');
+const { OTLPMetricExporter } = require('@opentelemetry/exporter-metrics-otlp-http');
+const { PeriodicExportingMetricReader } = require('@opentelemetry/sdk-metrics');
 
 const resource = resources.resourceFromAttributes({
   [SEMRESATTRS_SERVICE_NAME]: 'demo-app',
@@ -16,13 +18,24 @@ const traceExporter = new OTLPTraceExporter({
   url: 'http://localhost:4318/v1/traces',
 });
 
+const metricExporter = new OTLPMetricExporter({
+  url: 'http://localhost:4318/v1/metrics',
+});
+
+// Create a metric reader that exports metrics every 5 seconds
+const metricReader = new PeriodicExportingMetricReader({
+  exporter: metricExporter,
+  exportIntervalMillis: 5000, // Export every 5 seconds
+});
+
 const sdk = new NodeSDK({
   resource,
   traceExporter,
+  metricReader,
   instrumentations: [getNodeAutoInstrumentations()],
 });
 
 // Initialize the SDK before the app starts
-sdk.start()
+sdk.start();
 
-console.log('Tracing initialized');
+console.log('Tracing and Metrics initialized');
