@@ -1,4 +1,9 @@
 # From Zero to Observable: Instrumenting an App with OpenTelemetry and SigNoz
+<a href="https://fluttering-pound-832.notion.site/From-Zero-to-Observable-Instrumenting-an-App-with-OpenTelemetry-and-SigNoz-22b142900fbc806cb882f2a3e92ff79d">
+  <img src="Images/Notion-logo.svg" alt="Notion Logo" style="height: 20px; vertical-align: middle;"/>
+  Notion Site
+</a>
+<br></br>
 
 *Author: Aftab S*
 
