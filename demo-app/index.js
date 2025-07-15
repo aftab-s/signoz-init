@@ -28,7 +28,7 @@ const transport = pino.transport({
 
 const logger = pino(transport);
 
-console.log('Pino configured with OpenTelemetry transport + console output');
+// console.log('Pino configured with OpenTelemetry transport + console output');
 logger.info('Pino logger initialized');
 
 // Use the SDK's global meter instead of creating a separate MeterProvider
