@@ -25,7 +25,7 @@ const metricExporter = new OTLPMetricExporter({
 });
 
 const logExporter = new OTLPLogExporter({
-  url: 'http://localhost:4317/v1/logs',
+  url: 'http://localhost:4318/v1/logs',
 });
 
 // Create a metric reader that exports metrics every 5 seconds
@@ -47,5 +47,8 @@ const sdk = new NodeSDK({
 
 // Initialize the SDK before the app starts
 sdk.start();
+
+//console.log('OpenTelemetry instrumentation initialized: Traces, Metrics, and Logs!');
+//console.log('Log exporter configured for: http://localhost:4318/v1/logs');
 
 console.log('OpenTelemetry instrumentation initialized: Traces, Metrics, and Logs!');

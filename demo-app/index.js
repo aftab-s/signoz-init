@@ -7,10 +7,29 @@ const pino = require('pino');
 const { metrics } = require('@opentelemetry/api');
 
 const transport = pino.transport({
-  target: 'pino-opentelemetry-transport'
+  targets: [
+    {
+      target: 'pino-opentelemetry-transport',
+      options: {
+        resourceAttributes: {
+          'service.name': 'demo-app',
+          'service.version': '1.0.0'
+        }
+      }
+    },
+    {
+      target: 'pino-pretty',
+      options: {
+        colorize: true
+      }
+    }
+  ]
 });
 
 const logger = pino(transport);
+
+console.log('Pino configured with OpenTelemetry transport + console output');
+logger.info('Pino logger initialized');
 
 // Use the SDK's global meter instead of creating a separate MeterProvider
 const meter = metrics.getMeter('demo-app', '1.0.0');
